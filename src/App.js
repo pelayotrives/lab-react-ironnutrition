@@ -3,6 +3,7 @@ import foods from './foods.json';
 import Foodbox from './components/Foodbox';
 import AddFood from './components/AddFood';
 import Search from './components/Search';
+import FoodTotal from './components/FoodTotal';
 import 'bulma/css/bulma.css';
 import './App.css';
 
@@ -21,10 +22,17 @@ function App() {
     console.log(FoodToAdd);
 
     // Agrego el item a products.
-    const foodCopy = [...allFoods]
-    foodCopy.push(FoodToAdd)
-    setAllFoods(foodCopy)
+    // const foodCopy = [...allFoods]
+    // foodCopy.push(FoodToAdd)
+    // setAllFoods(foodCopy)
+
+    const newArray = [...allFoods, FoodToAdd]
+    setHideForm(false)
+    setAllFoods(newArray)
+    setFilteredFoods(newArray)
   }
+
+  // ------------------------------------
 
   const searchList = (searchProps) => {
 
@@ -56,6 +64,9 @@ function App() {
       {filteredFoods.map((eachFood, index) => {
         return <Foodbox key={eachFood.name+index} foodProp={eachFood} />;
       })}
+      <br />
+      <FoodTotal/>
+      <br />
     </div>
   );
 }
