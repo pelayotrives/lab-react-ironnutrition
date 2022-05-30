@@ -2,29 +2,27 @@ import React from 'react';
 import { useState } from 'react';
 
 function AddFood(props) {
-
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [calories, setCalories] = useState(0);
   const [image, setImage] = useState('');
-  const { addFood, handleHideForm } = props
-  
+  const { addFood, handleHideForm } = props;
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Haciendo submit.', event.target);
-    
+
     //* Nuevo objeto a añadir.
     //! Lifting the State Up: Paso 3
     const newFood = {
-        name,
-        calories,
-        image
-    }
+      name,
+      calories,
+      image,
+    };
 
     //* Invocamos la función que viene por props y le pasamos el item que queremos agregar.
     //! Lifting the State Up: Paso 4
-    addFood(newFood)
-    handleHideForm()
+    addFood(newFood);
+    handleHideForm();
 
     //* Comprobamos que existe al apretar botón.
     // console.log(newFood);
